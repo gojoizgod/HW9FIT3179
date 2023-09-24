@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1000,
+  "height": 700,
+  "title":"Terrorism in Australia",
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/gojoizgod/FIT3179DV2/main/FIT3179Homework9/aus25fgd_r.topojson",
+        "format": {"type": "topojson", "feature": "collection"}
+      },
+      
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightblue",
+        "stroke": "steelblue"
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/gojoizgod/FIT3179DV2/main/FIT3179Homework9/DATA/AUS1.csv"
+      },
+      
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {"value": 66},
+        "color": {"value": "red"},
+        "tooltip": [
+          {"field": "provstate", "title": "State/Province"},
+          {"field": "city", "title": "City"},
+          {"field": "attacktype1_txt", "title": "Attack Type"},
+          {"field": "targtype1_txt", "title": "Target Type"}
+        ]
+
+      }
+    }
+  ]
+}
